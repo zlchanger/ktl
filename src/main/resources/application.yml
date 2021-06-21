@@ -1,5 +1,14 @@
 spring:
   r2dbc:
-    url: r2dbc:postgresql://118.31.107.145:5432/postgres
-    username: postgres
-    password: 123456
+    url: r2dbc:postgresql://*.*.*.*:5432/postgres
+    username: *
+    password: *
+    pool:
+      enabled: true
+      initial-size: 50
+      max-size: 100
+
+logging:
+  level:
+    org.springframework.r2dbc: debug
+  config: classpath:log4j2-dev.yml
