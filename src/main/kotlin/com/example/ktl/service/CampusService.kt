@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.sql.Timestamp
+import java.time.OffsetDateTime
 
 /**
  * @author : changzhaoliang
@@ -33,8 +33,8 @@ class CampusService(
 
         val campus = Campus(
             name = name, displayName = name, schoolId = schoolId, corpId = schoolId,
-            externalId = "1", source = source, campusHash = "1-1", dateCreated = Timestamp(System.currentTimeMillis()),
-            lastUpdated = Timestamp(System.currentTimeMillis()), nick = nick
+            externalId = "1", source = source, campusHash = "1-1", dateCreated = OffsetDateTime.now(),
+            lastUpdated = OffsetDateTime.now(), nick = nick
         )
 
         return campusRepository.save(campus)

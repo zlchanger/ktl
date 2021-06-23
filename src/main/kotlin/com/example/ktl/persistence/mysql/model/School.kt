@@ -2,7 +2,7 @@ package com.example.ktl.persistence.mysql.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
-import java.sql.Timestamp
+import java.time.OffsetDateTime
 
 /**
  * @author : changzhaoliang
@@ -11,7 +11,7 @@ import java.sql.Timestamp
  */
 @Table("queen_school")
 data class School(
-    @Id val id: Long,
+    @Id val id: Long? = null,
     val name: String? = null,
     val displayName: String? = null,
     val status: Short = 1,
@@ -20,6 +20,6 @@ data class School(
     val externalId: String? = null,
     val source: Short = 1,
     val schoolHash: String? = null,
-    val lastUpdated: Timestamp? = null,
-    val dateCreated: Timestamp? = null
+    val lastUpdated: OffsetDateTime? = null,
+    val dateCreated: OffsetDateTime? = null
 )

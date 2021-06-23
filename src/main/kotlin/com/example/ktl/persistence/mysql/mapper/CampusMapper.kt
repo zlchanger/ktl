@@ -5,7 +5,7 @@ import com.example.ktl.exception.KtlException
 import com.example.ktl.persistence.mysql.model.Campus
 import io.r2dbc.spi.Row
 import org.springframework.stereotype.Component
-import java.sql.Timestamp
+import java.time.OffsetDateTime
 import java.util.function.BiFunction
 
 /**
@@ -27,8 +27,8 @@ class CampusMapper : BiFunction<Row, Any, Campus> {
             t.get("external_id", String::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
             t.get("source", Number::class.java)?.toShort() ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
             t.get("campus_hash", String::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
-            t.get("last_updated", Timestamp::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
-            t.get("date_created", Timestamp::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
+            t.get("last_updated", OffsetDateTime::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
+            t.get("date_created", OffsetDateTime::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR),
             t.get("nick", String::class.java) ?: throw KtlException(ErrorStatus.DATA_BASE_DATA_ERROR)
         )
     }

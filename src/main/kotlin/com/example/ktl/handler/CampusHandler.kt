@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.*
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import reactor.core.publisher.Mono
+import reactor.kotlin.core.publisher.toMono
 
 /**
  * @author : changzhaoliang
@@ -24,6 +25,13 @@ class CampusHandler(
             validator.validate(it)
         }.map { m ->
             m.flatMap { campusService.createCampus(it.name, it.schoolId, 1, it.nick) }
+        }.flatMap {
+            ok().json().body(it)
+        }
+
+    fun index(request: ServerRequest): Mono<ServerResponse> =
+        request.toMono().map {
+            it.queryParamOrNull("schoolId")?.let { it1 -> campusService.findAllCampusBySchoolIdAndSource(it1, 1) }
         }.flatMap {
             ok().json().body(it)
         }
