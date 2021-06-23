@@ -11,15 +11,15 @@ import java.sql.Timestamp
  */
 @Table("queen_school")
 data class School(
-    @Id var id: Long,
-    var name: String? = null,
-    var displayName: String? = null,
-    var status: Short = 1,
-    var version: Long = 0,
-    var corpId: String? = null,
-    var externalId: String? = null,
-    var source: Short = 1,
-    var schoolHash: String? = null,
-    var lastUpdated: Timestamp? = null,
-    var dateCreated: Timestamp? = null
+    @Id val id: Long,
+    val name: String? = null,
+    val displayName: String? = null,
+    val status: Short = 1,
+    val version: Long = 0,
+    val corpId: String? = null,
+    val externalId: String? = null,
+    val source: Short = 1,
+    val schoolHash: String? = null,
+    val lastUpdated: Timestamp? = null,
+    val dateCreated: Timestamp? = null
 )

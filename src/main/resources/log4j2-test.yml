@@ -1,0 +1,29 @@
+Configuration:
+  status: WARN
+  Properties:
+    Property:
+      name: pattern
+      #%d日期 %t线程 %5p五个字符的日志输出级别 %l日志发生的位置 %m日志内容 %n换行
+      value: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%5p %t %l - %m%n"
+  Appenders:
+    #配置控制台输出的格式
+    File:
+      #输出到项目根路径下的 logs/out.log文件
+      name: fileLog
+      fileName: logs/out.log
+      PatternLayout:
+        pattern: ${pattern}
+
+  Loggers:
+    Root:
+      #总输出级别 error  , 输出到控制台
+      level: ERROR
+      AppenderRef:
+        ref: fileLog
+    Logger:
+      #org.kotcloud路径下的日志输出级别为trace, additivity(默认true)=false不重复输出
+      name: org.kotcloud
+      level: DEBUG
+      additivity: false
+      AppenderRef:
+        ref: fileLog

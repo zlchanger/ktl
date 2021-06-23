@@ -2,7 +2,7 @@ package com.example.ktl.persistence.mysql.repository
 
 import com.example.ktl.persistence.mysql.mapper.CampusMapper
 import com.example.ktl.persistence.mysql.model.Campus
-import org.springframework.data.repository.reactive.ReactiveCrudRepository
+import org.springframework.data.r2dbc.repository.R2dbcRepository
 import org.springframework.r2dbc.core.DatabaseClient
 import reactor.core.publisher.Flux
 
@@ -11,9 +11,9 @@ import reactor.core.publisher.Flux
  * @date : 2021/6/16 18:49
  * @description :
  */
-interface CampusRepository : ReactiveCrudRepository<Campus, Long>, CustomCampusRepository {
+interface CampusRepository : R2dbcRepository<Campus, Long>, CustomCampusRepository {
 
-    fun findAllBySchoolId(schoolId: String)
+    fun findAllBySchoolIdAndSource(schoolId: String, source: Short): Flux<Campus>
 }
 
 interface CustomCampusRepository {

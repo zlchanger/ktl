@@ -11,7 +11,7 @@ import java.sql.Timestamp
  */
 @Table("queen_campus")
 data class Campus(
-    @Id var id: Long,
+    @Id val id: Long? = 0,
     val name: String? = null,
     val displayName: String? = null,
     val schoolId: String? = null,

@@ -18,6 +18,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
@@ -28,6 +29,18 @@ dependencies {
     implementation("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
+
+    // https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
+    implementation("jakarta.validation:jakarta.validation-api:3.0.0")
+    implementation("io.github.cdimascio:openapi-spring-webflux-validator:3.4.0")
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+}
+
+configurations {
+    all {
+        exclude("org.springframework.boot", "spring-boot-starter-logging")
+    }
 }
 
 tasks.withType<KotlinCompile> {
