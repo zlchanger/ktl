@@ -35,6 +35,10 @@ dependencies {
     implementation("io.github.cdimascio:openapi-spring-webflux-validator:3.4.0")
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
+
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    implementation("org.flywaydb:flyway-core:7.12.0")
+
 }
 
 configurations {

@@ -8,6 +8,19 @@ spring:
       initial-size: 50
       max-size: 100
 
+  jpa:
+    properties:
+      hibernate:
+        dialect:org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/postgres
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+    baseline-on-migrate: true
+
 logging:
   level:
     org.springframework.r2dbc: debug

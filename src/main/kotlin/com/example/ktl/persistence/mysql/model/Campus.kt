@@ -9,7 +9,7 @@ import java.time.OffsetDateTime
  * @date : 2021/6/16 18:08
  * @description :
  */
-@Table("queen_campus")
+@Table("campus")
 data class Campus(
     @Id val id: Long? = null,
     val name: String? = null,

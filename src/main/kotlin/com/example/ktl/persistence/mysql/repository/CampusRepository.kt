@@ -28,17 +28,17 @@ interface CustomCampusRepository {
 
 const val selectSizesByProduct = """
 //    SELECT sizes.id as size_id, sizes.code as size_code, sizes.sort_order as sort_order
-//    FROM queen_campus
+//    FROM campus
 //    INNER JOIN product_sizes on sizes.id = product_sizes.size_id
 //    WHERE product_sizes.product_id = :productId
 """
 
 const val deleteAllBySchoolId = """
-    UPDATE queen_campus SET status = 0 WHERE school_id = :schoolId and status = 1
+    UPDATE campus SET status = 0 WHERE school_id = :schoolId and status = 1
 """
 
 const val insertCampus = """
-    INSERT INTO queen_campus (name, display_name, school_id, status, version, external_id, source, campus_hash, date_created, last_updated) VALUES (:name, :displayName, :schoolId, 1, 0, :externalId, :source, :campusHash, :dateCreated, :lastUpdated)
+    INSERT INTO campus (name, display_name, school_id, status, version, external_id, source, campus_hash, date_created, last_updated) VALUES (:name, :displayName, :schoolId, 1, 0, :externalId, :source, :campusHash, :dateCreated, :lastUpdated)
 """
 
 class CustomCampusRepositoryImpl(
